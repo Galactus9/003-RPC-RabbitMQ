@@ -15,12 +15,15 @@ By default, the code is set up to use a local RabbitMQ server running on localho
 The repository provides a basic client-server setup for RPC using RabbitMQ. Follow the steps below to run the code:
 
 Just run the solution through cli or IDE, go to the swagger window, and use the only endpoint that exists.
+
 The logic of this example is pretty simple, give the controller 2 integers and a Task 
+
 available tasks : 
-0 - Addition
-1 - Subtraction
-2 - Multiplication
-3 - Division
+
+- 0 - Addition
+- 1 - Subtraction
+- 2 - Multiplication
+- 3 - Division
 
 Then the controller will send a message to RabbitMQ through RpcClient
 The RpcServer will hear about the massage, will consume it, and will generate the result.
