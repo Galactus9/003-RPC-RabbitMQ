@@ -25,8 +25,10 @@ available tasks :
 - 2 - Multiplication
 - 3 - Division
 
-Then the controller will send a message to RabbitMQ through RpcClient
+Then the controller will send a message to RabbitMQ through RpcClient.
+
 The RpcServer will hear about the massage, will consume it, and will generate the result.
+
 When the result is ready will respond to the RpcClient and then the result will be displayed in swagger.
 
 ## Acknowledgements
