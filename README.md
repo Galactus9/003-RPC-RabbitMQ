@@ -10,3 +10,7 @@ To run the RPC-RabbitMQ code, ensure you have the following dependencies:
 
 ## Configuration
 By default, the code is set up to use a local RabbitMQ server running on localhost. If you have RabbitMQ running on a different host or port, you can modify the connection settings 
+
+## Acknowledgements
+
+- RabbitMQ: https://www.rabbitmq.com/
