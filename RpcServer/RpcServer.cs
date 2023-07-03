@@ -5,6 +5,7 @@ using RabbitMQ.Client.Events;
 using System.Text.Json.Serialization;
 using Newtonsoft.Json;
 using RPC.Model;
+using DbContext;
 
 namespace RpcServer
 {
@@ -18,9 +19,10 @@ namespace RpcServer
         private IConnection _connection;
         private IModel _channel;
         private bool _isDisposed;
-
-        public RpcServer()
+        private ICosmosContext _context;
+        public RpcServer(ICosmosContext context)
         {
+            _context = context;
             // Create a connection to the RabbitMQ server.
             var factory = new ConnectionFactory
             {
@@ -44,12 +46,11 @@ namespace RpcServer
         // Event handler for processing received messages.
         private void Consumer_Received(object? sender, BasicDeliverEventArgs ea)
         {
-            LogMessage?.Invoke("Received Request from client..");
-
+            var log = new Logging(_context);
             // Extract the message body and deserialize it into a TestModel object.
             var body = ea.Body.ToArray();
             var message = Encoding.UTF8.GetString(body);
-            TestModel? model = JsonConvert.DeserializeObject<TestModel>(message);
+            MessageModel? model = JsonConvert.DeserializeObject<MessageModel>(message);
 
             // Prepare the response properties.
             var replyProps = _channel.CreateBasicProperties();
@@ -58,7 +59,8 @@ namespace RpcServer
 
             // Perform the calculation based on the received model.
             var result = Calculator.Calculate(model);
-            LogMessage?.Invoke($"Calculation result is {result}");
+
+            log.Log(model,$"Calculation result is {result}").GetAwaiter().GetResult();
 
             // Serialize the response and publish it to the reply-to queue.
             var response = JsonConvert.SerializeObject(result);

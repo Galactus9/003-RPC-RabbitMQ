@@ -1,4 +1,5 @@
-﻿using RpcServer;
+﻿using DbContext;
+using RpcServer;
 
 namespace consoleTest
 {
@@ -6,7 +7,8 @@ namespace consoleTest
     {
         static void Main(string[] args)
         {
-            var test = new RpcServer.RpcServer();
+            var dnContext = new CosmosContext();
+            var test = new RpcServer.RpcServer(dnContext);
             Console.ReadKey();
         }
     }

@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DbContext\DbContext.csproj" />
     <ProjectReference Include="..\RpcClient\RpcClient.csproj" />
   </ItemGroup>
 

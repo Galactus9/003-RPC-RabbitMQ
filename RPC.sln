@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RPC", "RPC\RPC.csproj", "{5D75D8E1-7E87-4104-AB9B-14219FB5B5E7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RPC", "RPC\RPC.csproj", "{5D75D8E1-7E87-4104-AB9B-14219FB5B5E7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RpcClient", "RpcClient\RpcClient.csproj", "{E4850094-7C89-410E-BDBC-5E60D3C9E997}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RpcClient", "RpcClient\RpcClient.csproj", "{E4850094-7C89-410E-BDBC-5E60D3C9E997}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RpcServer", "RpcServer\RpcServer.csproj", "{4734E731-A09A-4ECD-BFDA-A192A2BC9003}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RpcServer", "RpcServer\RpcServer.csproj", "{4734E731-A09A-4ECD-BFDA-A192A2BC9003}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "consoleTest", "consoleTest\consoleTest.csproj", "{819E18B5-CC03-4CC0-8883-E835E510DA8F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "consoleTest", "consoleTest\consoleTest.csproj", "{819E18B5-CC03-4CC0-8883-E835E510DA8F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DbContext", "DbContext\DbContext.csproj", "{56FB2CB6-1D92-41D3-9726-8C0001AC31DD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{819E18B5-CC03-4CC0-8883-E835E510DA8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{819E18B5-CC03-4CC0-8883-E835E510DA8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{819E18B5-CC03-4CC0-8883-E835E510DA8F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56FB2CB6-1D92-41D3-9726-8C0001AC31DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56FB2CB6-1D92-41D3-9726-8C0001AC31DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56FB2CB6-1D92-41D3-9726-8C0001AC31DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56FB2CB6-1D92-41D3-9726-8C0001AC31DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
