@@ -109,17 +109,18 @@
 }
 #c {
   grid-column: 1 / 4;
-  background-color: rgb(102, 185, 134);
+  background-color: rgb(66, 184, 131);
   color: rgb(0, 0, 0);
 }
 
 .btn {
-  background-color: #e4d7d7;
-  border: 2px solid #999;
+    color: rgb(53, 73, 94);
+  border: 2px solid #101520;
 }
 
 .operator {
-  background-color: rgb(102, 185, 134);
-  color: rgb(255, 255, 255);
+  background-color: rgb(66, 184, 131);
+  color: rgb(53, 73, 94);
+
 }
 </style>
