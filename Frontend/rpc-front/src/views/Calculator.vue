@@ -92,15 +92,15 @@
 .calculator {
   margin: 0 auto;
   width: 400px;
-  font-size: 40px;
+  font-size: 50px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: minmax(50px, auto);
+  grid-auto-rows: minmax(60px, auto);
 }
 
 .display {
   grid-column: 1 / 5;
-  background-color: #333;
+  background-color: #575353;
   color: white;
 }
 
@@ -109,17 +109,17 @@
 }
 #c {
   grid-column: 1 / 4;
-  background-color: orange;
-  color: white;
+  background-color: rgb(102, 185, 134);
+  color: rgb(0, 0, 0);
 }
 
 .btn {
-  background-color: #F2F2F2;
-  border: 1px solid #999;
+  background-color: #e4d7d7;
+  border: 2px solid #999;
 }
 
 .operator {
-  background-color: orange;
-  color: white;
+  background-color: rgb(102, 185, 134);
+  color: rgb(255, 255, 255);
 }
 </style>
