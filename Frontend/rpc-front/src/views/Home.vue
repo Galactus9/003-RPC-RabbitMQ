@@ -51,7 +51,7 @@
 
         console.log(response.data)
         if (response.data) {
-            router.push('/Calculator');
+            router.push({ path: '/Calculator', query: { userName: payload.userName } });
         }
 
     } catch (error) {

@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -10,7 +11,7 @@ const router = createRouter({
       component: () => import('../views/Home.vue')
     },
     {
-      path:'/',
+      path:'/Calculator',
       name:'Calculator',
       component: () => import('../views/Calculator.vue')
     },
