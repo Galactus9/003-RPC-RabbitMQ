@@ -14,8 +14,8 @@ namespace RPC.Model
         public string? IP { get; set; }
         [JsonProperty("duration")]
         public double Duration { get; set; }
-        [JsonProperty("message")]
-        public string Message { get; set; }
+        [JsonProperty("result")]
+        public float? Result { get; set; }
         [JsonProperty("action")]
         public TaskType Action { get; set; }
     }

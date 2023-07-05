@@ -58,9 +58,9 @@ namespace RpcServer
             replyProps.ReplyTo = ea.BasicProperties.ReplyTo;
 
             // Perform the calculation based on the received model.
-            var result = Calculator.Calculate(model);
+            float? result = Calculator.Calculate(model);
 
-            log.Log(model,$"Calculation result is {result}").GetAwaiter().GetResult();
+            log.Log(model, result).GetAwaiter().GetResult();
 
             // Serialize the response and publish it to the reply-to queue.
             var response = JsonConvert.SerializeObject(result);
@@ -71,11 +71,6 @@ namespace RpcServer
             _channel.BasicAck(deliveryTag: ea.DeliveryTag, multiple: false);
         }
 
-        // Delegate for handling log messages.
-        public delegate void LogMessageHandler(string message);
-
-        // Event that is triggered when a log message needs to be emitted.
-        public event LogMessageHandler LogMessage;
 
         // Clean up resources.
         private void Dispose(bool disposing)

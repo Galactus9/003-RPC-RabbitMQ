@@ -9,7 +9,7 @@ namespace RpcServer
 {
     internal static class Calculator
     {
-        internal static double? Calculate(MessageModel model)
+        internal static float? Calculate(MessageModel model)
         {
             if (model.Task == TaskType.Addition)
             {

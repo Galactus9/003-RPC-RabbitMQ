@@ -16,7 +16,7 @@ namespace RpcServer
         {
             _context = context;
         }
-        internal async Task Log(MessageModel mModel, string message)
+        internal async Task Log(MessageModel mModel, float? result)
         {
             var log = new LoggingModel
             {
@@ -25,7 +25,7 @@ namespace RpcServer
                 UserName = mModel.UserName,
                 DateOfLog = DateTime.Now,
                 Duration = (DateTime.Now - mModel.intialTime).TotalMilliseconds,
-                Message = message,
+                Result = result,
                 Action = mModel.Task
             };
             await _context.logContainer.CreateItemAsync(log);           

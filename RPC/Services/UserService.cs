@@ -1,4 +1,6 @@
 ﻿using DbContext;
+using DbContext.Models;
+using Microsoft.Azure.Cosmos;
 using Microsoft.Azure.Cosmos.Linq;
 using RPC.Model;
 
@@ -39,7 +41,7 @@ namespace RPC.Services
             //check if user name exists
             try
             {
-                var query = _context.userContainer.GetItemLinqQueryable<UserModel>()
+                FeedIterator<UserModel>? query = _context.userContainer.GetItemLinqQueryable<UserModel>()
                     .Where(x => x.UserName == user.UserName)
                     .ToFeedIterator();
 
@@ -61,6 +63,25 @@ namespace RPC.Services
             {
                 return false;
             }
+        }
+        public async Task<LogModelFront> LogData(string userName)
+        {
+            var query = _context.logContainer.GetItemLinqQueryable<LoggingModel>()
+                                        .Where(x => x.UserName == userName)
+                                        .ToFeedIterator();
+
+            var response = await query.ReadNextAsync();
+            var result = response.LastOrDefault();
+
+            var final = new LogModelFront
+            {
+                UserName = result?.UserName ?? string.Empty,
+                Duration = result?.Duration ?? 0,
+                Ip = result?.IP ?? string.Empty,
+                Result = result?.Result ?? 0,
+            };
+
+            return final;
         }
     }
 }

@@ -25,7 +25,6 @@ namespace RPC
             });
 
 
-            builder.Services.AddHttpContextAccessor();
             builder.Services.AddScoped<ICosmosContext, CosmosContext>();
             builder.Services.AddScoped<IUserService, UserService>();
             //builder.Services.AddScoped(RpcClient);

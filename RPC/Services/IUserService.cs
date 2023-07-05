@@ -1,4 +1,5 @@
-﻿using RPC.Model;
+﻿using DbContext.Models;
+using RPC.Model;
 
 namespace RPC.Services
 {
@@ -6,7 +7,7 @@ namespace RPC.Services
     {
         Task<bool> UserCreate(UserModel user);
         Task<bool> UserLoggin(UserModel user);
-
+        Task<LogModelFront> LogData(string userName);
 
     }
 }

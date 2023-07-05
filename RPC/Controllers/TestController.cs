@@ -11,11 +11,10 @@ namespace RPC.Controllers
     public class TestController : ControllerBase
     {
         private readonly IUserService _userService;
-        private readonly IHttpContextAccessor _httpContextAccessor;
-        public TestController(IUserService userService, IHttpContextAccessor httpContextAccessor)
+
+        public TestController(IUserService userService)
         {
             _userService = userService;
-            _httpContextAccessor = httpContextAccessor;
         }
 
         [HttpPost]
@@ -37,23 +36,12 @@ namespace RPC.Controllers
         [Route("[action]")]
         public async Task<ActionResult> Calculator(TestModel model)
         {
-            //string ipAddress = _httpContextAccessor.HttpContext?.Connection.RemoteIpAddress?.ToString();
-            var clientIpAddress = _httpContextAccessor.HttpContext.Connection.RemoteIpAddress;
-            var ipv4Address = clientIpAddress.MapToIPv4().ToString();
+            var ipv4Address = HttpContext.Connection.RemoteIpAddress.MapToIPv4().ToString();
 
-            //string ipAddress = _httpContextAccessor.HttpContext?.Connection.RemoteIpAddress?.ToString();
-
-            //// Check for X-Forwarded-For header
-            //string forwardedHeader = _httpContextAccessor.HttpContext?.Request.Headers["X-Forwarded-For"];
-            //if (!string.IsNullOrEmpty(forwardedHeader))
-            //{
-            //    // Get the first IP address from the comma-separated list
-            //    ipAddress = forwardedHeader.Split(',')[0].Trim();
-            //}
             var messageData = new MessageModel 
             { 
                 UserName = model.userName, 
-                //Ip = ipv4Address,
+                Ip = ipv4Address,
                 Number1 = model.Number1,
                 Number2 = model.Number2,
                 Task = model.Task,
@@ -61,11 +49,11 @@ namespace RPC.Controllers
             };
             var _rpcClient = new RpcClient.RpcClient();
             var response = await _rpcClient.SendAsync(messageData);
-            return Ok(response);
+            if(response != null)
+            {
+                return Ok(await _userService.LogData(model.userName));
+            }
+            return BadRequest();
         }
-
-        //var _rpcClient = new RpcClient.RpcClient();
-        //var response = await _rpcClient.SendAsync(model);
-        //return Ok(response);
     }
 }

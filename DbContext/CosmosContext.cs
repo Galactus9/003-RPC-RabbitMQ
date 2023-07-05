@@ -21,10 +21,10 @@ namespace DbContext
         public CosmosContext()
         {
             CosmosClient _client = CreateConnection();
-            _client.CreateDatabaseIfNotExistsAsync("Work-Project");
+            //_client.CreateDatabaseIfNotExistsAsync("Work-Project");
             database = _client.CreateDatabaseIfNotExistsAsync("Work-Project").GetAwaiter().GetResult();
             userContainer = database.CreateContainerIfNotExistsAsync("Users", "/username").GetAwaiter().GetResult();
-            logContainer = database.CreateContainerIfNotExistsAsync("Logs", "/id").GetAwaiter().GetResult();
+            logContainer = database.CreateContainerIfNotExistsAsync("Logs", "/username").GetAwaiter().GetResult();
         }
 
         private CosmosClient CreateConnection()
